@@ -1,6 +1,6 @@
-# Drizzle Truffle Box
+# Drizzle Biconomy Box
 
-This box comes with everything you need to start using smart contracts from a react app with Drizzle. It includes `drizzle`, `drizzle-react` and `drizzle-react-components` to give you a complete overview of Drizzle's capabilities.
+This box comes with everything you need to start using smart contracts that enable biconomy meta transaction  feature. It includes example for using the SDK  `@biconomy/mexa` for both ( native meta transaction and normal contracts)  and using `https://api.biconomy.io` to give you a complete overview of biconomy's capabilities.
 
 ## Installation
 
@@ -8,13 +8,13 @@ First ensure you are in a new and empty directory.
 
 1. Run the `unbox` command via `npx` and skip to step 3. This will install all necessary dependencies. A Create-React-App is generated in the `app` directory.
    ```js
-   npx truffle unbox drizzle
+   npx truffle unbox biconomy-drizzle
    ```
 
 2. Alternatively, you can install Truffle globally and run the `unbox` command.
     ```javascript
     npm install -g truffle
-    truffle unbox drizzle
+    truffle unbox biconomy-drizzle
     ```
 
 3. Run the development console.
@@ -25,7 +25,7 @@ First ensure you are in a new and empty directory.
 4. Compile and migrate the smart contracts. Note inside the development console we don't preface commands with `truffle`.
     ```javascript
     compile
-    migrate
+    truffle migrate --network ropsten `feel free to choose any supported network by biconomy`
     ```
 
 5. In the `app` directory, we run the React app. Smart contract changes must be manually recompiled and migrated.
@@ -57,6 +57,10 @@ First ensure you are in a new and empty directory.
     ```
 
 ## FAQ
+
+* __Where do I find more information about Biconomey?__
+
+    Check out our [documentation](https://docs.biconomy.io/).
 
 * __Where do I find more information about Drizzle?__
 
