@@ -122,8 +122,15 @@ export default ({ drizzle, drizzleState }) => {
       }
     }
   };
+
   const sendTransaction = async (userAddress, functionData, r, s, v) => {
     try {
+      let gasLimit = await drizzle.contracts.QuoteContract.methods
+      .executeMetaTransaction(userAddress, functionData, r, s, v)
+      .estimateGas({ from: userAddress });
+    let gasPrice = await web3.eth.getGasPrice();
+    console.log(gasLimit);
+    console.log(gasPrice);
       fetch(`https://api.biconomy.io/api/v2/meta-tx/native`, {
         method: "POST",
         headers: {
@@ -132,11 +139,13 @@ export default ({ drizzle, drizzleState }) => {
         },
         body: JSON.stringify({
           "to": drizzle.contracts.QuoteContract.address,
-          "apiId": "9b185c4c-b647-4abc-9a94-066ad46602df",
+          "apiId": "e2abbec3-ab4d-4475-9d4e-9da53ff6c3ab",
           "params": [
             userAddress, functionData, r, s, v
           ],
-          "from": userAddress
+          "from": userAddress,
+          "gasPrice": web3.utils.toHex(gasPrice),
+          "gasLimit": web3.utils.toHex(gasLimit)
         })
       })
         .then(response => response.json())
